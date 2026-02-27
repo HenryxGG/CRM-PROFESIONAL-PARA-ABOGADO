@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Tema - LegisCRM</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #0f172a;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0 0 24px 0;
+        }
+        .button {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        .button:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.4);
+        }
+        .button:active {
+            transform: translateY(0);
+        }
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .status.success {
+            background: #dcfce7;
+            color: #166534;
+            display: block;
+        }
+        .code {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 16px 0;
+            border-left: 4px solid #d97706;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Restablecer Tema CRM</h1>
+        <p>Si el CRM está iniciando en modo oscuro a pesar de las configuraciones, este botón limpiará el tema guardado y establecerá el modo claro como predeterminado.</p>
+        
+        <button class="button" onclick="resetTheme()">Restablecer a Modo Claro</button>
+        
+        <div class="status" id="status">
+            ✅ Tema restablecido correctamente a Modo Claro.<br>
+            Por favor, recarga la aplicación.
+        </div>
+
+        <div style="margin-top: 30px; padding-top: 30px; border-top: 2px solid #f1f5f9;">
+            <h3 style="color: #0f172a; font-size: 16px; margin-bottom: 12px;">Alternativa Manual:</h3>
+            <p style="font-size: 14px; margin-bottom: 8px;">También puedes abrir la consola del navegador (F12) y ejecutar:</p>
+            <div class="code">
+                localStorage.setItem('theme', 'light');<br>
+                localStorage.setItem('sidebarCollapsed', 'false');<br>
+                location.reload();
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function resetTheme() {
+            // Limpiar tema y establecer modo claro
+            localStorage.setItem('theme', 'light');
+            localStorage.setItem('sidebarCollapsed', 'false');
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('status').classList.add('success');
+            
+            // Recargar después de 1 segundo
+            setTimeout(() => {
+                window.location.href = 'http://localhost:5174';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
