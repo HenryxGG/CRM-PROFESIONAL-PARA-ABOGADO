@@ -6,6 +6,7 @@ import Agenda from './pages/Agenda';
 import Documents from './pages/Documents';
 import CaseDetails from './pages/CaseDetails';
 import Tools from './pages/Tools';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/agenda" element={<Agenda />} />
         <Route path="/documents" element={<Documents />} />
         <Route path="/tools" element={<Tools />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
